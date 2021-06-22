@@ -6,8 +6,11 @@ module.exports = async function (context, req) {
     let resp = await fetch("https://cataas.com/cat/says/Serverless", { method: "GET" });
     let data = await resp.arrayBuffer();
 
+    let base64data = Buffer.from(data).toString('base64');
+
+
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: data
+        body: base64data
     };
 }
