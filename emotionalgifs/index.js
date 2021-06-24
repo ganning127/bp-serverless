@@ -11,7 +11,7 @@ module.exports = async function (context, req) {
     
     // console.log(parts[0].data)
     // var result = await analyzeImage(parts[0].data);
-    var result = await analyzeImage(body);
+    var result = await analyzeImage(parts[0].data);
     console.log(result)
     context.res = {
         body: {
@@ -25,6 +25,10 @@ async function analyzeImage(img) {
     const subKey = process.env.SUBSCRIPTIONKEY;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
 
+    // console.log(process.env.SUBSCRIPTIONKEY)
+    // console.log(uriBase)
+    // console.log(process.env.FUNCTIONS_WORKER_RUNTIME)
+    // console.log(process.env)
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'
