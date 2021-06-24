@@ -12,18 +12,22 @@ module.exports = async function (context, req) {
     // console.log(parts[0].data)
     // var result = await analyzeImage(parts[0].data);
     var result = await analyzeImage(parts[0].data);
-    console.log(result)
+    let emotions = result[0].faceAttributes.emotion;
+    let dominantEmotion = determineDom(emotions);
+
+
     context.res = {
-        body: {
-            result
-        }
+        body: dominantEmotion
     };
 }
 
 
 async function analyzeImage(img) {
-    const subKey = process.env.SUBSCRIPTIONKEY;
-    const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+    // const subKey = process.env.SUBSCRIPTIONKEY;
+    // const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+
+    const subKey = "84292ce5d06d428393896771b243d34c";
+    const uriBase = 'https://face-ganning.cognitiveservices.azure.com/' + '/face/v1.0/detect';
 
     // console.log(process.env.SUBSCRIPTIONKEY)
     // console.log(uriBase)
@@ -49,5 +53,19 @@ async function analyzeImage(img) {
 
     let data = await resp.json();
     return data;
+}
 
+function determineDom(emotionJSON) {
+    console.log(emotionJSON);
+    let maxValue = 0;
+    let domEmo;
+
+    for (var emo in emotionJSON) {
+        if (emotionJSON[emo] > maxValue) {
+            maxValue = emotionJSON[emo];
+            domEmo = emo;
+        }
+    }
+    console.log(domEmo)
+    return domEmo
 }
