@@ -13,11 +13,7 @@ module.exports = async function (context, req) {
     var body = req.body;
     var headers = req.headers;
 
-    if (body == null) {
-        context.log("Undefined body image");
-        responseMessage = "Sorry! No image attached."
-    }
-    else {
+    try {
         var parsedBody = multipart.Parse(body, boundary);
         // get the file extension
         var ext = determineExt(parsedBody[0].type);
@@ -25,6 +21,11 @@ module.exports = async function (context, req) {
         // upload the file to blob
         responseMessage = await uploadFile(parsedBody, ext, password);
     }
+    catch(err) {
+        context.log("Undefined body image");
+        responseMessage = "Sorry! No image attached."
+    }
+        
     
     context.log(responseMessage);
     context.res = {
