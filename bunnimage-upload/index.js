@@ -6,6 +6,7 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     context.log(connectionString)
+    
     var boundary = multipart.getBoundary(req.headers['content-type']);
     var body = req.body;
     var parsedBody = multipart.Parse(body, boundary);
@@ -21,7 +22,7 @@ module.exports = async function (context, req) {
     }
 
     var responseMessage = await uploadFile(parsedBody, ext);
-
+    context.log(responseMessage);
     context.res = {
         body: "File Saved"
     };
