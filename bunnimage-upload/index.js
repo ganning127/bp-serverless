@@ -1,6 +1,5 @@
 const multipart = require('parse-multipart');
-// const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-const connectionString = "DefaultEndpointsProtocol=https;AccountName=ganningstorage;AccountKey=Oe40unfX1izdwX1wVplaEFmF/KKgPMq0odks9J2D1gObHNu1IR1fKOOL5oNQe88XTSVHjzZVhMDfA2rrhT3sjQ==;EndpointSuffix=core.windows.net"
+const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
 const { BlobServiceClient } = require("@azure/storage-blob");
 
 module.exports = async function (context, req) {
