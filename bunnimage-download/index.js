@@ -4,20 +4,6 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     const username = req.headers.username;
-
-    let downloadObj = await getDownloadLink(username);
-    context.log(downloadObj)
-
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: {
-            "downloadUri": downloadObj.download,
-            "success": downloadObj.success
-        }
-    };
-}
-
-async function getDownloadLink(username) {
     let download;
     let success;
 
@@ -49,9 +35,11 @@ async function getDownloadLink(username) {
         console.log("Does exist: " + jpgdata)
      }
 
-    return {
-        "download": download,
-        "success": success
+    context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: {
+            "downloadUri": download,
+            "success": success
+        }
     };
-
 }
