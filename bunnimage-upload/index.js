@@ -1,5 +1,6 @@
 const multipart = require('parse-multipart');
-const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+// const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+const connectionString = "DefaultEndpointsProtocol=https;AccountName=ganningstorage;AccountKey=Oe40unfX1izdwX1wVplaEFmF/KKgPMq0odks9J2D1gObHNu1IR1fKOOL5oNQe88XTSVHjzZVhMDfA2rrhT3sjQ==;EndpointSuffix=core.windows.net"
 const { BlobServiceClient } = require("@azure/storage-blob");
 
 module.exports = async function (context, req) {
@@ -11,10 +12,14 @@ module.exports = async function (context, req) {
     var boundary = multipart.getBoundary(req.headers['content-type']);
     var body = req.body;
     var headers = req.headers;
+    context.log(body)
 
     if (body == null) {
         responseMessage = "Sorry! No image attached."
-    } else {
+    } else if (body.length < 1000) {
+        responseMessage = "Sorry! No image attached."
+    }
+    else {
         var parsedBody = multipart.Parse(body, boundary);
         // get the file extension
         var ext = determineExt(parsedBody[0].type);
