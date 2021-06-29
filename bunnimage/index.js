@@ -1,9 +1,9 @@
 function getImage() {
-    let codeInput = document.getElementById("name");
-    if (codeInput.value != '') {
-        $('#output').text(codeInput.value + "❤️")
+    let nameInput = document.getElementById("name");
+    if (nameInput.value != '') {
+        $('#output').text("Thanks!")
     }
     else {
-        $("#output").text("Bruh enter something will you");
+        alert("No name error.")
     }
 }
