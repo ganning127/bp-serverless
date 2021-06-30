@@ -21,10 +21,10 @@ module.exports = async function (context, req) {
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: {
-            cat1: cats[0],
-            cat2: cats[1],
-            cat3: cats[2],
-            cat4: cats[3],
+            name1: cats[0],
+            name2: cats[1],
+            name3: cats[2],
+            name4: cats[3],
         }
         
     };
