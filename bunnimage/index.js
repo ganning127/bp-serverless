@@ -1,6 +1,6 @@
 function getImage(event) {
     event.preventDefault();
-    let nameInput = document.getElementById("name");
+    let nameInput = document.getElementById("username");
     let fileInput = document.getElementById("image");
 
     if (nameInput.value != '') {
