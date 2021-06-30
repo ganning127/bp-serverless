@@ -15,11 +15,11 @@
   <body>
       <div>
               <h1 id="h1">Give your code some love ❤️</h1>
-              <form enctype="multipart/form-data" onsubmit="getImage(event)">
+              <form enctype="multipart/form-data">
                   <label>Code: </label>
                   <input type="file" accept="image/x-png,image/jpeg" name="image">
-                  <input id="name" type="text"  placeholder="Enter your file's name" required>
-                  <input type="submit" type="button"/>
+                  <input id="name" type="text"  placeholder="Enter your file's name">
+                  <input type="button" value="Submit" onclick="getImage()" />
               </form>
               <br/>
               <div id="output">
