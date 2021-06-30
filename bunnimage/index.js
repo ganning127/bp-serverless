@@ -29,10 +29,32 @@ function getImage(event) {
         } catch (e) {
             $('#output').text(e)
         }
-
-
     }
     else {
         alert("No name error.")
     }
+}
+
+
+
+function downloadImage() {
+    const username = document.getElementById('downloadusername').value;
+    const endpoint = "https://bunnimage-download.azurewebsites.net/api/bunnimage-download?code=73UFuMIMIepi5y4cjICtNQB97putXgyrWPO7OKmEf37fydSIWnjahQ==";
+    fetch(endpoint, {
+        headers: {
+            username: username
+        }
+    })
+        .then(resp => {
+            return resp.json()
+        })
+        .then(data => {
+            if (data.success) {
+                window.open(data.downloadUri, "_self")
+            }
+            else {
+                $('#output').text("No such filename")
+            }
+        })
+
 }
