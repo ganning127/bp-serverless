@@ -38,7 +38,7 @@ function getImage(event) {
 
 
 function downloadImage() {
-    const username = document.getElementById('downloadusername').value;
+    const username = document.getElementById('username').value;
     const endpoint = "https://bunnimage-download.azurewebsites.net/api/bunnimage-download?code=73UFuMIMIepi5y4cjICtNQB97putXgyrWPO7OKmEf37fydSIWnjahQ==";
     fetch(endpoint, {
         headers: {
