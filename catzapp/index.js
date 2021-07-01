@@ -1,9 +1,15 @@
 function y1k3s() {
-    const textToUse = document.getElementById("text").value;
 
+    let texts = [];
+
+    for (var i=1; i<5; i++) {
+        let value = document.getElementById(`name${i}`).value;
+        texts.push(value);
+    }
+
+    console.log(texts)
     
-    
-    const base64 = getCat(textToUse);
+    const base64 = getCat(texts);
 }
 
 async function getCat(textQuery) {
@@ -11,7 +17,10 @@ async function getCat(textQuery) {
 
     const options = {
         headers: {
-            text: textQuery
+            name1: textQuery[0],
+            name2: textQuery[1],
+            name3: textQuery[2],
+            name4: textQuery[3]
         }
     }
     fetch(endpoint, options)
@@ -20,7 +29,14 @@ async function getCat(textQuery) {
         })
         .then(data => {
             console.log(data)
-            let imgTag = "data:image/png;base64, ";
-            document.getElementById("image").src = imgTag + data.cat1
+            console.log(data.length)
+
+            let imgBase = "data:image/png;base64, ";
+
+            for (var i=1; i<5; i++) {
+                console.log(imgBase + data[`name${i}`])
+                document.getElementById(`image${i}`).src = imgBase + data[`name${i}`]
+            }
+            
         })
 }
