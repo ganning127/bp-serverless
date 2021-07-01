@@ -4,16 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>The best form</title>
+    <script>
+      function getImage() {
+          let text = $("name").val()
+          $('#output').text(text)    
+          console.log("HERE")
+      }
+    </script>
   </head>
   <body>
       <div>
-              <h1 id="h1">Give your code some love ❤️</h1>
-              <form>
+              <h1 id="h1">Bunnimage</h1>
+              <form enctype="multipart/form-data" onsubmit="getImage(event)" id="bunniForm">
                   <label>Code: </label>
-                  <input type="text" id="name" name="name" /><br>
-                  <input value="Submit" type="button" />
+                  <input type="file" accept="image/x-png,image/jpeg" name="image" id="image">
+                  <input id="username" type="text"  placeholder="Enter your file's name">
+                  <input type="submit" id="button1" value="Upload"/>
+                  
               </form>
+              <br>
+              <input type="text" id="downloadusername"  >
+              <input type="button" id="button2" value="Download" onclick="downloadImage()">
               <br/>
-              <div id="output"></div>
+              <div id="output">
+
+              </div>
         </div>
     </body>  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+     
+    
+    <script src="index.js" type="text/javascript"></script>
