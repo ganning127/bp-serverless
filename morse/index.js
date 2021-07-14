@@ -4,14 +4,15 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     let plaintext = req.query.plaintext;
+    let code;
 
-    if (typeof plaintext === 'undefined') {
-        context.res = {
-            body: "Please enter some text to convert."
-        }
-        return;
+    if (typeof plaintext === 'undefined' || plaintext === "") {
+        code = "Please enter some text to  convert!"
     }
-    const code = morse.textToMorse(plaintext);
+    else {
+        code = morse.textToMorse(plaintext);
+    }
+    
 
     context.res = {
         // status: 200, /* Defaults to 200 */

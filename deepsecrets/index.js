@@ -1,5 +1,7 @@
-const querystring = require('querystring');
+const qs = require('qs');
 const CosmosClient = require("@azure/cosmos").CosmosClient;
+
+
 
 const config = {
     endpoint: "https://ganning.documents.azure.com:443/",
@@ -20,9 +22,11 @@ module.exports = async function (context, req) {
     //     partitionKey: {kind: "Hash", paths: ["/secrets"]}
     // }
 
-    
+    context.log("__________")
+    context.log(req.body)
+    const queryObject = qs.parse(req.body);
+    context.log(queryObject)
 
-    const queryObject = querystring.parse(req.body);
     const message = queryObject.Body;
     let document = {"message" : message}
     let items = await createDocument(document)

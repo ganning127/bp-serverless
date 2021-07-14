@@ -1,4 +1,4 @@
-const querystring = require('querystring');
+const querystring = require('qs');
 const fetch = require('node-fetch');
 
 module.exports = async function (context, req) {
