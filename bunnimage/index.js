@@ -6,10 +6,10 @@ function getImage(event) {
     if (nameInput.value != '') {
         try {
 
-        
+        console.log("DSFDSFS")
         const endpoint = "https://bunnimage-function.azurewebsites.net/api/bunnimage-upload?code=1p6wLhuQBHpe/0gKVFD8i4ogEd2iRewBtWHTovdAejSOIZH7Y0mT/Q==";
 
-        
+            console.log("HSDFSD")
         const file = fileInput.files[0];
         var bunniForm = document.getElementById("bunniForm") 
         var payload = new FormData(bunniForm);
