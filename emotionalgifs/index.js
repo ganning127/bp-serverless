@@ -15,7 +15,7 @@ module.exports = async function (context, req) {
 
     var gif = await findGifs(dominantEmotion)
     context.res = {
-        body: gif
+        body: process.env
     };
 }
 
